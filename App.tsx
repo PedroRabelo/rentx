@@ -5,7 +5,7 @@ import {ThemeProvider} from 'styled-components';
 import {Inter_400Regular, Inter_500Medium, useFonts} from '@expo-google-fonts/inter';
 import {Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold,} from '@expo-google-fonts/archivo';
 import theme from './src/styles/theme';
-import {SchedulingDetails} from './src/screens/SchedulingDetails';
+import {Routes} from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SchedulingDetails />
+      <Routes />
     </ThemeProvider>
   )
 }

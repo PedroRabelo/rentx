@@ -39,14 +39,29 @@ import forceSvg from '../../assets/force.svg';
 import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../routes/stack.routes';
+import {useNavigation} from '@react-navigation/native';
+
+type SchedulingDetailsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+  'SchedulingDetails'>;
 
 export function SchedulingDetails() {
   const theme = useTheme();
+  const {navigate, goBack} = useNavigation<SchedulingDetailsScreenNavigationProp>();
+
+  function handleBack() {
+    goBack();
+  }
+
+  function handleConfirm() {
+    navigate('SchedulingComplete');
+  }
 
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => {}}/>
+        <BackButton onPress={handleBack}/>
       </Header>
 
       <CarImages>
@@ -113,7 +128,7 @@ export function SchedulingDetails() {
       </Content>
 
       <Footer>
-        <Button title='Alugar'/>
+        <Button title='Alugar agora' color={theme.colors.success} onPress={handleConfirm}/>
       </Footer>
     </Container>
   );
