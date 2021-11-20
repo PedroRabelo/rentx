@@ -280,7 +280,10 @@
         "2021-05-30",
         "2021-06-16",
         "2021-06-17",
-        "2021-06-18"
+        "2021-06-18",
+        "2021-11-24",
+        "2021-11-25",
+        "2021-11-26"
       ]
     },
     {
@@ -358,7 +361,7 @@
           "period": "Ao dia",
           "price": 120
         },
-        "fuel_type": "electric_motor",
+        "fuel_type": "electric",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
         "accessories": [
           {
