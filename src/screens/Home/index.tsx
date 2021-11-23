@@ -36,7 +36,7 @@ export function Home() {
     navigate('CarDetails', { car });
   }
 
-  function handleOpenMyCars(car: CarDTO) {
+  function handleOpenMyCars() {
     navigate('MyCars');
   }
 
@@ -69,7 +69,7 @@ export function Home() {
             height={RFValue(12)}
           />
           <TotalCars>
-            Total de 12 carros
+            Total de {cars.length} carros
           </TotalCars>
         </HeaderContent>
       </Header>

@@ -15,7 +15,7 @@ import {
   Footer,
 } from './styles';
 import {BackButton} from '../../components/BackButton';
-import {Alert, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import {Button} from '../../components/Button';
 import {Calendar, DayProps, generateInterval, MarkedDatesProps} from '../../components/Calendar';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -48,14 +48,10 @@ export function Scheduling() {
   const { car } = route.params as Params;
 
   function handleConfirm() {
-    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
-      Alert.alert('Selecione o intervalo para alugar');
-    } else {
-      navigate('SchedulingDetails', {
-        car,
-        dates: Object.keys(markedDates),
-      });
-    }
+    navigate('SchedulingDetails', {
+      car,
+      dates: Object.keys(markedDates),
+    });
   }
 
   function handleBack() {
@@ -128,7 +124,11 @@ export function Scheduling() {
       </Content>
 
       <Footer>
-        <Button title='Confirmar' onPress={handleConfirm}/>
+        <Button
+          title='Confirmar'
+          onPress={handleConfirm}
+          enabled={!!rentalPeriod.endFormatted}
+        />
       </Footer>
     </Container>
   );
