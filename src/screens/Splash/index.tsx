@@ -1,11 +1,84 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {
-  Container
-} from './styles';
+import BrandSvg from '../../assets/brand.svg';
+import LogoSvg from '../../assets/logo.svg';
+
+import Animated, {
+  Extrapolate,
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  runOnJS
+} from 'react-native-reanimated';
+
+import {Container} from './styles';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../routes/stack.routes';
+
+type SplashScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+  'Splash'>;
 
 export function Splash() {
+  const { navigate } = useNavigation<SplashScreenNavigationProp>();
+
+  const splashAnimation = useSharedValue(0);
+
+  const brandStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(splashAnimation.value,[0, 50],[1, 0]),
+      transform: [
+        {
+          translateX: interpolate(splashAnimation.value,
+            [0, 50],
+            [0, -50],
+            Extrapolate.CLAMP
+          )
+        }
+      ]
+    }
+  });
+
+  const logoStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(splashAnimation.value,[0, 25, 50],[0, .3, 1]),
+      transform: [
+        {
+          translateX: interpolate(splashAnimation.value,
+            [0, 50],
+            [-50, 0],
+            Extrapolate.CLAMP
+          )
+        }
+      ]
+    }
+  });
+
+  function startApp() {
+    navigate('Home');
+  }
+
+  useEffect(() => {
+    splashAnimation.value = withTiming(
+      50,
+      {duration: 1000},
+      () => {
+        'worklet';
+        runOnJS(startApp)();
+      }
+    );
+  }, []);
+
   return (
-    <Container></Container>
+    <Container>
+      <Animated.View style={[brandStyle, {position: 'absolute'}]}>
+        <BrandSvg width={80} height={50}/>
+      </Animated.View>
+
+      <Animated.View style={[logoStyle, {position: 'absolute'}]}>
+        <LogoSvg width={180} height={20}/>
+      </Animated.View>
+    </Container>
   );
 }
