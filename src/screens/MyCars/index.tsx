@@ -24,6 +24,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useTheme} from 'styled-components';
 import {Car} from '../../components/Car';
 import {Load} from '../../components/Load';
+import {LoadingAnimation} from '../../components/LoadingAnimation';
 
 interface CarProps {
   id: string;
@@ -82,7 +83,7 @@ export function MyCars() {
 
       {
         loading
-          ? <Load/> :
+          ? <LoadingAnimation/> :
           <Content>
             <Appointments>
               <AppointmentTitle>Agendamentos feitos</AppointmentTitle>
