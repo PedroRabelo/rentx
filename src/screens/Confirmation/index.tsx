@@ -14,17 +14,25 @@ import {
 import {ConfirmButton} from '../../components/ConfirmButton';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../routes/stack.routes';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
-type SchedulingCompleteScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
-  'SchedulingComplete'>;
+type ConfirmationScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+  'Confirmation'>;
 
-export function SchedulingComplete() {
+interface Params {
+  title: string;
+  message: string;
+  nextScreenRoute: keyof RootStackParamList;
+}
+
+export function Confirmation() {
   const { width } = useWindowDimensions();
-  const {navigate} = useNavigation<SchedulingCompleteScreenNavigationProp>();
+  const {navigate} = useNavigation<ConfirmationScreenNavigationProp>();
+  const route = useRoute();
+  const {title, message, nextScreenRoute} = route.params as Params;
 
   function handleConfirm() {
-    navigate('Home');
+    navigate(nextScreenRoute);
   }
 
   return (
@@ -37,12 +45,8 @@ export function SchedulingComplete() {
       <LogoSvg width={width}/>
       <Content>
         <DoneSvg width={80} height={80}/>
-        <Title>Carro alugado!</Title>
-        <Message>
-          Agora você só precisa ir {'\n'}
-          até a concessionária da RENTX {'\n'}
-          pegar o seu automóvel.
-        </Message>
+        <Title>{title}</Title>
+        <Message>{message}</Message>
       </Content>
       <Footer>
         <ConfirmButton title='OK' onPress={handleConfirm}/>
