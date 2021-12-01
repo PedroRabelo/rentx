@@ -1,28 +1,17 @@
 import React, {useState} from 'react';
-import {
-  StatusBar,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard, Alert
-} from 'react-native';
+import {Alert, Keyboard, KeyboardAvoidingView, StatusBar, TouchableWithoutFeedback} from 'react-native';
 import * as Yup from 'yup';
-import {
-  Container,
-  Header,
-  Title,
-  Form,
-  SubTitle,
-  Footer
-} from './styles';
+import {Container, Footer, Form, Header, SubTitle, Title} from './styles';
 import {Button} from '../../components/Button';
 import {useTheme} from 'styled-components';
 import {Input} from '../../components/Input';
 import {PasswordInput} from '../../components/PasswordInput';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../routes/stack.routes';
 import {useNavigation} from '@react-navigation/native';
+import {useAuth} from '../../hooks/auth';
+import {RootAuthParamList} from '../../routes/auth.routes';
 
-type SigninScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+type SigninScreenNavigationProp = NativeStackNavigationProp<RootAuthParamList,
   'Signin'>;
 
 export function Signin() {
@@ -32,6 +21,7 @@ export function Signin() {
   const [password, setPassword] = useState('');
 
   const theme = useTheme();
+  const {signIn} = useAuth();
 
   async function handleSignin() {
     try {
@@ -41,6 +31,8 @@ export function Signin() {
       });
 
       await schema.validate({ email, password });
+
+      await signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError){
         Alert.alert('Atenção', error.message);

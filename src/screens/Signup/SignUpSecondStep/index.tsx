@@ -9,7 +9,8 @@ import {Button} from '../../../components/Button';
 import {Alert, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback} from 'react-native';
 import {PasswordInput} from '../../../components/PasswordInput';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/stack.routes';
+import {RootStackParamList} from '../../../routes/app.stack.routes';
+import {api} from '../../../services/api';
 
 type SignUpSecondStepScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
   'SignUpSecondStep'>;
@@ -37,17 +38,27 @@ export function SignUpSecondStep() {
     goBack();
   }
 
-  function handleRegister() {
+  async function handleRegister() {
     if(!password || !passwordConfirm)
       return Alert.alert('Informe a senha e a confirmação');
 
     if(password !== passwordConfirm)
       return Alert.alert('As senhas não são iguais');
 
-    navigate('Confirmation', {
-      nextScreenRoute: 'Signin',
-      title: 'Conta Criada!',
-      message: `Agora é só fazer o login\ne aproveitar`
+    await api.post('/users', {
+      name: user.name,
+      email: user.email,
+      driver_license: user.driverLicence,
+      password,
+    }).then(() => {
+      navigate('Confirmation', {
+        nextScreenRoute: 'Signin',
+        title: 'Conta Criada!',
+        message: `Agora é só fazer o login\ne aproveitar`
+      });
+    }).catch((error) => {
+      console.log(error);
+      Alert.alert('Opa', 'Não foi possível cadastrar');
     });
   }
 

@@ -6,18 +6,18 @@ import LogoSvg from '../../assets/logo.svg';
 import Animated, {
   Extrapolate,
   interpolate,
+  runOnJS,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
-  runOnJS
+  withTiming
 } from 'react-native-reanimated';
 
 import {Container} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootAuthParamList} from '../../routes/auth.routes';
 
-type SplashScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+type SplashScreenNavigationProp = NativeStackNavigationProp<RootAuthParamList,
   'Splash'>;
 
 export function Splash() {
@@ -56,7 +56,7 @@ export function Splash() {
   });
 
   function startApp() {
-    navigate('Home');
+    navigate('Signin');
   }
 
   useEffect(() => {

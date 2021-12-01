@@ -23,7 +23,6 @@ import {BackButton} from '../../components/BackButton';
 import {useNavigation} from '@react-navigation/native';
 import {useTheme} from 'styled-components';
 import {Car} from '../../components/Car';
-import {Load} from '../../components/Load';
 import {LoadingAnimation} from '../../components/LoadingAnimation';
 
 interface CarProps {

@@ -34,7 +34,7 @@ import {RFValue} from 'react-native-responsive-fontsize';
 import {useTheme} from 'styled-components';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../routes/app.stack.routes';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {CarDTO} from '../../dtos/CarDTO';
 import {getAccessoryIcon} from '../../utils/getAccessoryIcon';

@@ -6,6 +6,7 @@ import {Inter_400Regular, Inter_500Medium, useFonts} from '@expo-google-fonts/in
 import {Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold,} from '@expo-google-fonts/archivo';
 import theme from './src/styles/theme';
 import {Routes} from './src/routes';
+import {AppProvider} from './src/hooks';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,7 +23,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
     </ThemeProvider>
   )
 }

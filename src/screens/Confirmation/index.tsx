@@ -13,7 +13,7 @@ import {
 } from './styles';
 import {ConfirmButton} from '../../components/ConfirmButton';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../routes/app.stack.routes';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 type ConfirmationScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,

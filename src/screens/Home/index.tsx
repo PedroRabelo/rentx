@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StatusBar, StyleSheet, BackHandler} from 'react-native';
+import {StatusBar, StyleSheet} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 
 import Animated, {
@@ -15,7 +15,7 @@ import {CarList, Container, Header, HeaderContent, TotalCars} from './styles';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {Car} from '../../components/Car';
 import {useNavigation} from '@react-navigation/native';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../routes/app.stack.routes';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {api} from '../../services/api';
 import {CarDTO} from '../../dtos/CarDTO';
@@ -85,12 +85,6 @@ export function Home() {
     fetchCars();
   }, []);
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true;
-    })
-  }, []);
-
   return (
     <Container>
       <StatusBar
@@ -125,29 +119,29 @@ export function Home() {
         />
       }
 
-      <PanGestureHandler onGestureEvent={onGestureEvent}>
-        <Animated.View
-          style={[
-            myCarsButtonStyle,
-            {
-              position: 'absolute',
-              bottom: 13,
-              right: 22
-            }
-          ]}
-        >
-          <ButtonAnimated
-            onPress={handleOpenMyCars}
-            style={[styles.button, {backgroundColor: theme.colors.main}]}
-          >
-            <Ionicons
-              name='ios-car-sport'
-              size={32}
-              color={theme.colors.shape}
-            />
-          </ButtonAnimated>
-        </Animated.View>
-      </PanGestureHandler>
+      {/*<PanGestureHandler onGestureEvent={onGestureEvent}>*/}
+      {/*  <Animated.View*/}
+      {/*    style={[*/}
+      {/*      myCarsButtonStyle,*/}
+      {/*      {*/}
+      {/*        position: 'absolute',*/}
+      {/*        bottom: 13,*/}
+      {/*        right: 22*/}
+      {/*      }*/}
+      {/*    ]}*/}
+      {/*  >*/}
+      {/*    <ButtonAnimated*/}
+      {/*      onPress={handleOpenMyCars}*/}
+      {/*      style={[styles.button, {backgroundColor: theme.colors.main}]}*/}
+      {/*    >*/}
+      {/*      <Ionicons*/}
+      {/*        name='ios-car-sport'*/}
+      {/*        size={32}*/}
+      {/*        color={theme.colors.shape}*/}
+      {/*      />*/}
+      {/*    </ButtonAnimated>*/}
+      {/*  </Animated.View>*/}
+      {/*</PanGestureHandler>*/}
     </Container>
   );
 }

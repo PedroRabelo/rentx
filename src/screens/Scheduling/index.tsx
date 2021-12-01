@@ -19,7 +19,7 @@ import {StatusBar} from 'react-native';
 import {Button} from '../../components/Button';
 import {Calendar, DayProps, generateInterval, MarkedDatesProps} from '../../components/Calendar';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../routes/app.stack.routes';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {getPlatformDate} from '../../utils/getPlatformDate';
 import {format} from 'date-fns';
