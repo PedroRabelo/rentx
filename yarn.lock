@@ -413,6 +413,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-proposal-decorators@npm:^7.16.4":
+  version: 7.16.4
+  resolution: "@babel/plugin-proposal-decorators@npm:7.16.4"
+  dependencies:
+    "@babel/helper-create-class-features-plugin": ^7.16.0
+    "@babel/helper-plugin-utils": ^7.14.5
+    "@babel/plugin-syntax-decorators": ^7.16.0
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: de4f3187c60d14fca37f4edf9d27c61b22e62609708bbaa48bd25b705ab4d5d09457b1011bf6fb55607b11c7a227310f3db5ced4802ded96a79202af7fad7101
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-proposal-dynamic-import@npm:^7.16.0":
   version: 7.16.0
   resolution: "@babel/plugin-proposal-dynamic-import@npm:7.16.0"
@@ -1400,7 +1413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.8.4":
   version: 7.16.3
   resolution: "@babel/runtime@npm:7.16.3"
   dependencies:
@@ -1801,6 +1814,49 @@ __metadata:
     "@nodelib/fs.scandir": 2.1.5
     fastq: ^1.6.0
   checksum: 190c643f156d8f8f277bf2a6078af1ffde1fd43f498f187c2db24d35b4b4b5785c02c7dc52e356497b9a1b65b13edc996de08de0b961c32844364da02986dc53
+  languageName: node
+  linkType: hard
+
+"@nozbe/simdjson@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@nozbe/simdjson@npm:1.0.0"
+  checksum: 283eb33917a3a0ffc627ac87e39f3aa8bd3a2057e40607452ab497158dff90d791533028489264172a30476f1a217f4f0f75082f54e0c0e8fc0ece4a40e1e99b
+  languageName: node
+  linkType: hard
+
+"@nozbe/sqlite@npm:3.36.0":
+  version: 3.36.0
+  resolution: "@nozbe/sqlite@npm:3.36.0"
+  checksum: 2e432398aad78b6244339974ee9371dfecb78f46bc1aa179fbb74dff673dc728fad394aba0371599414b62842de7085635b74cb5eb0c5c6200578ecdac3453de
+  languageName: node
+  linkType: hard
+
+"@nozbe/watermelondb@npm:^0.24.0":
+  version: 0.24.0
+  resolution: "@nozbe/watermelondb@npm:0.24.0"
+  dependencies:
+    "@babel/runtime": ^7.11.2
+    "@nozbe/simdjson": 1.0.0
+    "@nozbe/sqlite": 3.36.0
+    "@nozbe/with-observables": 1.4.0
+    hoist-non-react-statics: ^3.3.2
+    lokijs: "npm:@nozbe/lokijs@1.5.12-wmelon4"
+    rxjs: ^7.3.0
+    sql-escape-string: ^1.1.0
+  checksum: 7306e150857c90650d2872a8a368f5f25555a0ca3df40737424e546e8cc9c4de6f91f0ea782e29799882205436de25f45845b55454e1aa03f4dc42a740c96d45
+  languageName: node
+  linkType: hard
+
+"@nozbe/with-observables@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@nozbe/with-observables@npm:1.4.0"
+  dependencies:
+    hoist-non-react-statics: ^3.3.2
+  peerDependencies:
+    "@types/hoist-non-react-statics": ^3.3.1
+    "@types/react": ^16.9.23||^17
+    react: ^16.4.2||^17
+  checksum: 8d0212131c040ab8a4938de10c457de0c85cd2f3472897a99afde06c72a66e3977c55c934a6342eb9aec85490ce6126ef61d8118861fc086f47f54111abf001e
   languageName: node
   linkType: hard
 
@@ -4848,7 +4904,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hoist-non-react-statics@npm:^3.0.0, hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.1":
+"hoist-non-react-statics@npm:^3.0.0, hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.1, hoist-non-react-statics@npm:^3.3.2":
   version: 3.3.2
   resolution: "hoist-non-react-statics@npm:3.3.2"
   dependencies:
@@ -5870,6 +5926,13 @@ __metadata:
   bin:
     logkitty: bin/logkitty.js
   checksum: f1af990ff09564ef5122597a52bba6d233302c49865e6ddea1343d2a0e2efe3005127e58e93e25c98b6b1f192731fc5c52e3204876a15fc9a52abc8b4f1af931
+  languageName: node
+  linkType: hard
+
+"lokijs@npm:@nozbe/lokijs@1.5.12-wmelon4":
+  version: 1.5.12-wmelon4
+  resolution: "@nozbe/lokijs@npm:1.5.12-wmelon4"
+  checksum: 3b646ff9d7050d6dd283bc4c5e75ef62859e0eb8b7e5905c4f926db5cae9ba818d8b5f393297ca3a662e9d20f7d8633cc7c7a4c183bb23b2659a38cd7551898b
   languageName: node
   linkType: hard
 
@@ -7836,8 +7899,10 @@ __metadata:
   resolution: "rentx@workspace:."
   dependencies:
     "@babel/core": ^7.12.9
+    "@babel/plugin-proposal-decorators": ^7.16.4
     "@expo-google-fonts/archivo": ^0.2.0
     "@expo-google-fonts/inter": ^0.2.0
+    "@nozbe/watermelondb": ^0.24.0
     "@react-navigation/bottom-tabs": ^6.0.9
     "@react-navigation/native": ^6.0.6
     "@react-navigation/native-stack": ^6.2.5
@@ -8048,6 +8113,15 @@ __metadata:
   dependencies:
     queue-microtask: ^1.2.2
   checksum: cb4f97ad25a75ebc11a8ef4e33bb962f8af8516bb2001082ceabd8902e15b98f4b84b4f8a9b222e5d57fc3bd1379c483886ed4619367a7680dad65316993021d
+  languageName: node
+  linkType: hard
+
+"rxjs@npm:^7.3.0":
+  version: 7.4.0
+  resolution: "rxjs@npm:7.4.0"
+  dependencies:
+    tslib: ~2.1.0
+  checksum: 6b33172a760dcad6882fdc836ee8cf1ebe160dd7eaad95c45a12338ffdaa96eb41e48e6c25bbd3d1fdf45075949ff447954bc17a9d01c688558a67967d09c114
   languageName: node
   linkType: hard
 
@@ -8521,6 +8595,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sql-escape-string@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "sql-escape-string@npm:1.1.0"
+  checksum: 4e65c06031ba81d2bf3d94301b606d2c0254a2b0725ae426bb32015e407dedd45942c85386a8cacad64a76714d296652f94500331657a7676a57b1be48b85380
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^8.0.0, ssri@npm:^8.0.1":
   version: 8.0.1
   resolution: "ssri@npm:8.0.1"
@@ -8931,6 +9012,13 @@ __metadata:
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
+  languageName: node
+  linkType: hard
+
+"tslib@npm:~2.1.0":
+  version: 2.1.0
+  resolution: "tslib@npm:2.1.0"
+  checksum: aa189c8179de0427b0906da30926fd53c59d96ec239dff87d6e6bc831f608df0cbd6f77c61dabc074408bd0aa0b9ae4ec35cb2c15f729e32f37274db5730cb78
   languageName: node
   linkType: hard
 
