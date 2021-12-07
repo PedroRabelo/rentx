@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, Keyboard, KeyboardAvoidingView, StatusBar, TouchableWithoutFeedback} from 'react-native';
 import * as Yup from 'yup';
 import {Container, Footer, Form, Header, SubTitle, Title} from './styles';
@@ -10,6 +10,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import {useAuth} from '../../hooks/auth';
 import {RootAuthParamList} from '../../routes/auth.routes';
+import {database} from '../../database';
 
 type SigninScreenNavigationProp = NativeStackNavigationProp<RootAuthParamList,
   'Signin'>;
@@ -37,6 +38,7 @@ export function Signin() {
       if (error instanceof Yup.ValidationError){
         Alert.alert('Atenção', error.message);
       }else{
+        console.log(error);
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login, verifique as credenciais');
       }
     }
