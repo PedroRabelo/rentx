@@ -9,10 +9,10 @@ import {Button} from '../../../components/Button';
 import {Alert, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback} from 'react-native';
 import {PasswordInput} from '../../../components/PasswordInput';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/app.stack.routes';
 import {api} from '../../../services/api';
+import {RootAuthParamList} from '../../../routes/auth.routes';
 
-type SignUpSecondStepScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+type SignUpSecondStepScreenNavigationProp = NativeStackNavigationProp<RootAuthParamList,
   'SignUpSecondStep'>;
 
 interface Params {
@@ -69,8 +69,8 @@ export function SignUpSecondStep() {
           <Header>
             <BackButton onPress={handleBack}/>
             <Steps>
-              <Bullet active/>
               <Bullet />
+              <Bullet active/>
             </Steps>
           </Header>
 

@@ -8,10 +8,10 @@ import {Input} from '../../../components/Input';
 import {Button} from '../../../components/Button';
 import {Alert, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/app.stack.routes';
 import * as Yup from 'yup';
+import {RootAuthParamList} from '../../../routes/auth.routes';
 
-type SignUpFirstStepScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+type SignUpFirstStepScreenNavigationProp = NativeStackNavigationProp<RootAuthParamList,
   'SignUpFirstStep'>;
 
 export function SignUpFirstStep() {

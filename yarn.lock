@@ -4177,6 +4177,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-image-picker@npm:~11.0.3":
+  version: 11.0.3
+  resolution: "expo-image-picker@npm:11.0.3"
+  dependencies:
+    "@expo/config-plugins": ^4.0.2
+    expo-modules-core: ~0.4.4
+    uuid: 7.0.2
+  checksum: 70bd80d93e9c212e0f59d5308d613c438f78725cd596c7f324150909bac3b315b662efe80eea55faf7c58481081329b892b6aedbe51d81714805759ccf552315
+  languageName: node
+  linkType: hard
+
 "expo-json-utils@npm:~0.2.0":
   version: 0.2.0
   resolution: "expo-json-utils@npm:0.2.0"
@@ -7914,6 +7925,7 @@ __metadata:
     expo: ~43.0.2
     expo-app-loading: ~1.2.1
     expo-font: ~10.0.3
+    expo-image-picker: ~11.0.3
     expo-splash-screen: ~0.13.5
     expo-status-bar: ~1.1.0
     expo-updates: ~0.10.13
@@ -9267,6 +9279,15 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
+  languageName: node
+  linkType: hard
+
+"uuid@npm:7.0.2":
+  version: 7.0.2
+  resolution: "uuid@npm:7.0.2"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: f80af114b67e1f66020c70897be9ba889b1996fbfde8fc46eb7405e95d3448908a793bab36d16d11a082a16ca7e1d27ab5203e505dd3c1bab7efbb647bd94823
   languageName: node
   linkType: hard
 

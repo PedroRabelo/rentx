@@ -4,25 +4,19 @@ import {StatusBar, useWindowDimensions} from 'react-native';
 import LogoSvg from '../../assets/logo_background_gray.svg';
 import DoneSvg from '../../assets/done.svg';
 
-import {
-  Container,
-  Content,
-  Title,
-  Message,
-  Footer
-} from './styles';
+import {Container, Content, Footer, Message, Title} from './styles';
 import {ConfirmButton} from '../../components/ConfirmButton';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../routes/app.stack.routes';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {RootAuthParamList} from '../../routes/auth.routes';
 
-type ConfirmationScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
+type ConfirmationScreenNavigationProp = NativeStackNavigationProp<RootAuthParamList,
   'Confirmation'>;
 
 interface Params {
   title: string;
   message: string;
-  nextScreenRoute: keyof RootStackParamList;
+  nextScreenRoute: keyof RootAuthParamList;
 }
 
 export function Confirmation() {

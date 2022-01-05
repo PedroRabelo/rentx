@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Feather} from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 import {
   Container,
@@ -25,22 +26,39 @@ import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import {useAuth} from '../../hooks/auth';
 
 export function Profile() {
+  const {user, signOut} = useAuth();
+
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
+  const [avatar, setAvatar] = useState(user.avatar);
+  const [name, setName] = useState(user.name);
+  const [driverLicense, setDriverLicense] = useState(user.driver_license);
 
   const theme = useTheme();
   const {goBack} = useNavigation();
-  const {user} = useAuth();
 
   function handleBack() {
     goBack();
   }
 
-  function handleSignOut() {
-
-  }
-
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit'){
     setOption(optionSelected);
+  }
+
+  async function handleAvatarSelect() {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1,
+    });
+
+    if(result.cancelled){
+      return;
+    }
+
+    if(result.uri){
+      setAvatar(result.uri);
+    }
   }
 
   return (
@@ -54,7 +72,7 @@ export function Profile() {
                 onPress={handleBack}
               />
               <HeaderTitle>Editar Perfil</HeaderTitle>
-              <LogoutButton onPress={handleSignOut}>
+              <LogoutButton onPress={signOut}>
                 <Feather
                   name='power'
                   size={24}
@@ -64,8 +82,8 @@ export function Profile() {
             </HeaderTop>
 
             <PhotoContainer>
-              <Photo source={{ uri: 'https://avatars.githubusercontent.com/u/3707386?v=4'}}/>
-              <PhotoButton onPress={() => {}}>
+              { !!avatar && <Photo source={{uri: avatar}}/> }
+              <PhotoButton onPress={handleAvatarSelect}>
                 <Feather
                   name='camera'
                   size={24}
@@ -99,6 +117,7 @@ export function Profile() {
                     placeholder='Nome'
                     autoCorrect={false}
                     defaultValue={user.name}
+                    onChangeText={setName}
                   />
                   <Input
                     iconName='mail'
@@ -110,6 +129,7 @@ export function Profile() {
                     placeholder='CNH'
                     keyboardType='numeric'
                     defaultValue={user.driver_license}
+                    onChangeText={setDriverLicense}
                   />
                 </Section>
                 :
